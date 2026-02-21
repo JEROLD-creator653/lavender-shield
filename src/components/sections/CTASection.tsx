@@ -74,27 +74,21 @@ export default function CTASection() {
 
         {/* Buttons */}
         <div className="reveal delay-300 flex flex-wrap items-center justify-center gap-4">
-          <button className="magnetic-btn btn-gradient px-10 py-4 rounded-2xl font-bold text-base shadow-lg">
+          <a href="https://fdt-frontend.onrender.com" target="_blank" rel="noopener noreferrer" className="magnetic-btn btn-gradient px-10 py-4 rounded-2xl font-bold text-base shadow-lg">
             View User Web App
-          </button>
-          <button
+          </a>
+          <a
+            href="https://fdt-admin-backend.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="magnetic-btn px-10 py-4 rounded-2xl font-bold text-base glass-card transition-all duration-300 hover:shadow-lg"
             style={{
               color: 'hsl(var(--violet-deep))',
               border: '1.5px solid hsl(var(--lavender-light))',
             }}
           >
-            View Admin Console
-          </button>
-          <button
-            className="magnetic-btn px-10 py-4 rounded-2xl font-bold text-base glass-card transition-all duration-300 hover:shadow-lg"
-            style={{
-              color: 'hsl(var(--violet-deep))',
-              border: '1.5px solid hsl(var(--lavender-light))',
-            }}
-          >
-            Watch Demo
-          </button>
+            View Activity Dashboard
+          </a>
         </div>
 
         {/* Trust strip */}

@@ -13,17 +13,20 @@ const rows = [
 function AnimatedCheck({ show, delay }: { show: boolean; delay: number }) {
   return (
     <div
-      className="w-8 h-8 rounded-full flex items-center justify-center mx-auto"
+      className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto shadow-lg"
       style={{
-        background: show ? '#dcfce7' : '#fee2e2',
+        background: show 
+          ? 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' 
+          : 'linear-gradient(135deg, #f87171 0%, #ef4444 100%)',
         animation: `check-pop 0.5s ${delay}ms ease both`,
         opacity: 0,
+        transform: 'scale(0.5)',
       }}
     >
       {show ? (
-        <Check size={16} color="#16a34a" />
+        <Check size={18} color="#ffffff" strokeWidth={3} />
       ) : (
-        <X size={16} color="#ef4444" />
+        <X size={18} color="#ffffff" strokeWidth={3} />
       )}
     </div>
   );
@@ -64,7 +67,7 @@ export default function ComparisonSection() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <div
@@ -86,21 +89,24 @@ export default function ComparisonSection() {
         </div>
 
         {/* Comparison Table */}
-        <div className="reveal delay-300 glass-card rounded-3xl overflow-hidden">
+        <div 
+          className="reveal delay-300 rounded-3xl overflow-hidden"
+          style={{
+            background: 'hsl(var(--card))',
+            boxShadow: '0 25px 50px -12px hsl(var(--lavender-deep) / 0.25), 0 0 0 1px hsl(var(--border))',
+          }}
+        >
           {/* Table header */}
           <div
-            className="grid grid-cols-3 px-6 py-5 font-black text-sm uppercase tracking-widest"
+            className="grid grid-cols-3 px-8 py-6 font-bold text-sm uppercase tracking-wider"
             style={{
-              background: 'linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--lavender-light) / 0.2))',
-              color: 'hsl(var(--fdt-text))',
+              background: 'linear-gradient(135deg, hsl(var(--violet-deep)) 0%, hsl(var(--lavender-deep)) 100%)',
+              color: '#ffffff',
             }}
           >
             <div>Feature</div>
-            <div className="text-center" style={{ color: '#ef4444' }}>Traditional</div>
-            <div
-              className="text-center"
-              style={{ color: 'hsl(var(--violet-deep))' }}
-            >
+            <div className="text-center text-red-200">Traditional</div>
+            <div className="text-center text-emerald-200 font-black">
               FDT ✦
             </div>
           </div>
@@ -109,30 +115,29 @@ export default function ComparisonSection() {
           {rows.map(({ feature, traditional, fdt }, i) => (
             <div
               key={feature}
-              className="grid grid-cols-3 px-6 py-5 items-center text-sm border-t"
+              className="grid grid-cols-3 px-8 py-5 items-center text-sm text-center border-t group transition-all duration-300 hover:bg-muted/20"
               style={{
                 borderColor: 'hsl(var(--border))',
-                background: i % 2 === 0 ? 'transparent' : 'hsl(var(--lavender-light) / 0.04)',
               }}
             >
               {/* Feature name */}
-              <div className="font-semibold" style={{ color: 'hsl(var(--fdt-text))' }}>
+              <div className="font-bold text-left" style={{ color: 'hsl(var(--fdt-text))' }}>
                 {feature}
               </div>
 
               {/* Traditional value */}
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-3">
                 {visible && <AnimatedCheck show={false} delay={i * 100} />}
-                <span className="text-center text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                <span className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {traditional}
                 </span>
               </div>
 
               {/* FDT value */}
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-3">
                 {visible && <AnimatedCheck show={true} delay={i * 100 + 200} />}
                 <span
-                  className="text-center text-xs font-semibold"
+                  className="text-sm font-bold"
                   style={{ color: 'hsl(var(--fdt-text))' }}
                 >
                   {fdt}

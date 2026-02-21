@@ -50,7 +50,9 @@ export default function FooterSection() {
           {/* Right links */}
           <div className="flex items-center gap-4">
             <a
-              href="#"
+              href="https://github.com/JEROLD-creator653/Fraud-Detection-in-UPI---FDT2"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:opacity-80"
               style={{
                 background: 'hsl(0 0% 100% / 0.08)',
